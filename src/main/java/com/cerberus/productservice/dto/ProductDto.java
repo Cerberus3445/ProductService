@@ -1,22 +1,15 @@
-package com.cerberus.productservice.model;
+package com.cerberus.productservice.dto;
 
-import jakarta.persistence.*;
+import com.cerberus.productservice.model.Category;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@Entity
-@Table(name = "products")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class ProductDto {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;
@@ -27,6 +20,5 @@ public class Product {
 
     private Long price;
 
-    @Enumerated(value = EnumType.STRING)
     private Category category;
 }
