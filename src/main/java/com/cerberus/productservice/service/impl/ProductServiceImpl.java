@@ -7,6 +7,8 @@ import com.cerberus.productservice.model.Product;
 import com.cerberus.productservice.repository.ProductRepository;
 import com.cerberus.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
+    @Cacheable(value = "product", key = "#id")
     public ProductDto get(Long id) {
         return this.mapper.toDto(this.productRepository.findById(id)
                 .orElseThrow());
@@ -39,6 +42,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @CacheEvict(value = "product", key = "#id")
     public void update(Long id, ProductDto productDto) {
         this.productRepository.findById(id)
                 .ifPresentOrElse(product -> {
@@ -56,6 +60,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @CacheEvict(value = "product", key = "#id")
     public void delete(Long id) {
         this.productRepository.deleteById(id);
     }
