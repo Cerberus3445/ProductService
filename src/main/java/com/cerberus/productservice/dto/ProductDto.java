@@ -1,6 +1,7 @@
 package com.cerberus.productservice.dto;
 
 import com.cerberus.productservice.model.Category;
+import com.cerberus.productservice.model.Subcategory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,6 @@ public class ProductDto implements Serializable {
     private Long price;
 
     private Category category;
+
+    private Subcategory subcategory;
 }
