@@ -29,4 +29,7 @@ public class Product {
 
     @Enumerated(value = EnumType.STRING)
     private Category category;
+
+    @Enumerated(value = EnumType.STRING)
+    private Subcategory subcategory;
 }
